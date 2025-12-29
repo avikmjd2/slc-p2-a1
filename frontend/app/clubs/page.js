@@ -126,14 +126,14 @@ function ClubsGrid() {
         </div>
         <nav aria-label="Page navigation" className="mt-5">
           <ul className="pagination justify-content-center">
-            {/* Previous Button */}
+          
             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
               <button className="page-link rounded-pill me-2 border-0 shadow-sm" onClick={() => setCurrentPage(currentPage - 1)}>
                 &laquo;
               </button>
             </li>
 
-            {/* Page Numbers */}
+  
             {[...Array(totalPages)].map((_, index) => (
               <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
                 <button
@@ -146,7 +146,6 @@ function ClubsGrid() {
               </li>
             ))}
 
-            {/* Next Button */}
             <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
               <button className="page-link rounded-pill ms-2 border-0 shadow-sm" onClick={() => setCurrentPage(currentPage + 1)}>
                 &raquo;
@@ -257,7 +256,7 @@ export default function Page() {
   return (
     <ApolloProvider client={client}>
       <main className="min-h-screen bg-gray-50 p-4">
-        <h1 className="text-4xl font-extrabold text-center my-10">IIIT Clubs</h1>
+        <h1 className="text-4xl font-extrabold text-center mt-3 my-10">IIIT Clubs</h1>
         <ClubsGrid />
         <h2 className="mt-5 mb-3 display-6 fw-bold text-dark row justify-content-center">Add a club now !</h2>
         <Form />

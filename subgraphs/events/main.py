@@ -6,12 +6,12 @@ import strawberry.federation
 
 @strawberry.type
 class Event:
-    eid: str
-    name: str
-    clubid: str
-    time:str
-    location:str
-    mode:str
+    eid: str=""
+    name: str=""
+    clubid: str=""
+    time:str=""
+    location:str=""
+    mode:str=""
     description: str | None = "No description available."
     
 client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://db:27017")
@@ -26,7 +26,15 @@ class Query:
     async def all_events(self) -> list[Event]:
         Events =[]
         async for doc in collection.find({}):
-            Events.append(Event(eid=doc["eid"],name=doc["name"],description=doc.get("description", "No description defined"),clubid=doc.get("clubid",""),location=doc.get("location",""),mode=doc.get("mode","")))
+            Events.append(Event(
+                eid=str(doc.get("eid", "")),
+                name=doc.get("name", "Untitled Event"),
+                description=doc.get("description", "No description available."),
+                clubid=doc.get("clubid", ""),
+                location=doc.get("location", "TBD"),
+                mode=doc.get("mode", "Unknown"),
+                time=doc.get("time", "No time set")
+            ))
         return Events
 
 schema = strawberry.federation.Schema(query=Query)
