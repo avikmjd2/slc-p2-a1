@@ -5,7 +5,8 @@ import { useMutation } from "@apollo/client/react";
 
 import { client } from "../../lib/apollo-client"
 import LoadingOverlay from "../components/LoadingOverlay";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearch } from "../context/SearchContext";
 
 
 
@@ -49,17 +50,39 @@ const ADD_CLUB = gql`
 
 
 function ClubsGrid() {
+  const {search} = useSearch()
   const { loading, error, data } = useQuery(GET_CLUBS);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // if (loading) return <p className="text-center mt-10">Loading Clubs...</p>;
+  const filteredClubs = data?.allClubs.filter((club) => {
+    // If search is empty, show everything. 
+    // Otherwise, check if club name contains the search string
+    return club.name.toLowerCase().includes(search.toLowerCase());
+  }) || [];
+
+
+  const cardsPerPage = 6;
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+
+  // const currentCards = data?.allClubs.slice(indexOfFirstCard, indexOfLastCard);
+  const currentCards = filteredClubs?.slice(indexOfFirstCard, indexOfLastCard);
+
+  const totalPages = Math.ceil((data?.allClubs.length || 0) / cardsPerPage);
+
+  
   if (error) return <p className="text-red-500 text-center mt-10">Error: {error.message}</p>;
+  useEffect(() => {
+        setCurrentPage(1);
+    }, [search]);
 
   return (
     <>
       {loading && <LoadingOverlay />}
       <div className="container pb-5">
         <div className="row g-4 justify-content-center mt-2">
-          {data?.allClubs.map((club) => (
+          {(currentCards.length===0)&&<h2 className="container mt-5 d-flex align-items-center justify-content-center">No Content Found</h2>}
+          {currentCards?.map((club) => (
             <div key={club.cid} className="col-12 col-md-6 col-lg-4">
               {/* Card: Soft borders, light background, and elegant hover */}
               <div className="card h-100 border-0 shadow-sm rounded-4 text-center py-4 px-3 bg-white hover-lift">
@@ -101,6 +124,36 @@ function ClubsGrid() {
             </div>
           ))}
         </div>
+        <nav aria-label="Page navigation" className="mt-5">
+          <ul className="pagination justify-content-center">
+            {/* Previous Button */}
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <button className="page-link rounded-pill me-2 border-0 shadow-sm" onClick={() => setCurrentPage(currentPage - 1)}>
+                &laquo;
+              </button>
+            </li>
+
+            {/* Page Numbers */}
+            {[...Array(totalPages)].map((_, index) => (
+              <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                <button
+                  className="page-link mx-1 rounded-circle border-0 shadow-sm"
+                  style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  onClick={() => setCurrentPage(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
+
+            {/* Next Button */}
+            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+              <button className="page-link rounded-pill ms-2 border-0 shadow-sm" onClick={() => setCurrentPage(currentPage + 1)}>
+                &raquo;
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </>
   );
@@ -197,6 +250,8 @@ function Form() {
     </>
   )
 }
+
+
 
 export default function Page() {
   return (

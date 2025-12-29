@@ -3,6 +3,7 @@ import "./globals.css";
 import BootstrapClient from "@/lib/BootStrapClient";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navb from "./components/navbar";
+import { SearchProvider } from "./context/SearchContext";
 
 
 const geistSans = Geist({
@@ -24,11 +25,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <BootstrapClient/>
-      <Navb></Navb>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        >
+        <SearchProvider>
+
+        <Navb/>
         {children}
+        </SearchProvider>
       </body>
     </html>
   );
