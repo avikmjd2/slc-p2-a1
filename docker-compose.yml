@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    command: mongod --noauth
+
+  clubs:
+    build: ./subgraphs/clubs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  events:
+    build: ./subgraphs/events
+    ports:
+      - "8001:8001"
+  gateway:
+    build: ./gateway
+    ports:
+      - "4000:4000"
+    depends_on:
+      - clubs
+      - events
+  # We will add the Gateway and Frontend next

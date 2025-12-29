@@ -1,0 +1,9 @@
+{
+  "name": "iiit-gateway",
+  "version": "1.0.0",
+  "dependencies": {
+    "@apollo/gateway": "^2.4.0",
+    "@apollo/server": "^4.0.0",
+    "graphql": "^16.6.0"
+  }
+}

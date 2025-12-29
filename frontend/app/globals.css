@@ -1,0 +1,53 @@
+
+:root {
+  /* --background: #ffffff; */
+  --background: #171717;
+  --foreground: #171717;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* app/globals.css */
+
+/* Soft background color for the icons */
+.bg-soft-primary {
+  background-color: #e7f0ff;
+}
+
+/* Hover-Lift effect: A classy, subtle movement */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Custom button hover to match the soothing vibe */
+.btn-outline-primary {
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+}
+
+
+h1, h2 {
+  letter-spacing: -0.02em;
+}
