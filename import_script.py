@@ -6,6 +6,7 @@ import os
 # Port 27018 is usually the one mapped in your slc-2 docker-compose
 # client = pymongo.MongoClient("mongodb://localhost:27018")
 client = os.getenv("MONGO_URL", "mongodb://localhost:27018/iiit_clubs")
+client = pymongo.MongoClient(client)
 db = client["iiit_clubs"]
 collection = db["clubs_list"]
 

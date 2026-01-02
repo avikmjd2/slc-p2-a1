@@ -71,10 +71,10 @@ function ClubsGrid() {
   const totalPages = Math.ceil((data?.allClubs.length || 0) / cardsPerPage);
 
   
-  if (error) return <p className="text-red-500 text-center mt-10">Error: {error.message}</p>;
   useEffect(() => {
         setCurrentPage(1);
     }, [search]);
+  if (error) return <p className="text-red-500 text-center mt-10">Error: {error.message}</p>;
 
   return (
     <>

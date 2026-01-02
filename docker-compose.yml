@@ -14,6 +14,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    restart: always
     environment:
       - MONGO_URL=mongodb://db:27017/iiit_clubs
 
@@ -21,6 +22,7 @@ services:
     build: ./subgraphs/events
     ports:
       - "8001:8001"
+    restart: always
     environment:
       - MONGO_URL=mongodb://db:27017/iiit_clubs
 
@@ -31,6 +33,7 @@ services:
     depends_on:
       - clubs
       - events
+    restart: always
     environment:
       - CLUBS_URL=http://clubs:8000/graphql
       - EVENTS_URL=http://events:8001/graphql
@@ -47,19 +50,19 @@ services:
     environment:
       - NEXT_PUBLIC_GATEWAY_URL=http://localhost:4000/graphql
 
-    db-seed:
-      image: python:3.10-slim
-      volumes:
-        - .:/app              
-      working_dir: /app
-      depends_on:
-        - db                   
-      environment:
-        - MONGO_URL=mongodb://db:27017/iiit_clubs
-      command: >
-        sh -c "pip install pymongo requests && 
-              python import_scripts.py && 
-              python importevents.py"
+  db-seed:
+    image: python:3.10-slim
+    volumes:
+      - .:/app:z      
+    working_dir: /app
+    depends_on:
+      - db                   
+    environment:
+      - MONGO_URL=mongodb://db:27017/iiit_clubs
+    command: >
+      sh -c "pip install pymongo requests && 
+            python import_script.py && 
+            python importevents.py"
 
       
 volumes:
