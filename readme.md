@@ -1,9 +1,12 @@
  
  # 🚀 IIIT Clubs & Events Portal
 
- TASK1 is done in Task 1 folder directory. with screenshots of each working gateway query and mutation and its output is shown in slca1.docx. 
+ TASK1 is done in Task 1 folder directory. with screenshots of each working gateway query and mutation and its output screenshot is shown in slca1.docx. 
+ 
  BTW A IMPORTANT POINT:
  TASK1 was does in window so the code can be run in windows (maybe in Linux not sure)
+
+ 
  TASK2 (wordpress) can be both run in linux and windows.
 
  
@@ -46,7 +49,7 @@
  
  1. **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/slc-p2-a1.git](https://github.com/your-username/slc-p2-a1.git)
+    git clone [https://github.com/avikmjd2/slc-p2-a1.git](https://github.com/avikmjd2/slc-p2-a1.git)
     cd slc-p2-a1
     ```
  
