@@ -7,7 +7,7 @@
  TASK1 was does in window so the code can be run in windows (maybe in Linux not sure)
 
  
- TASK2 (wordpress) can be both run in linux and windows.
+ TASK2 (wordpress) can be both run in linux and windows. (Checked and verified though try both )
 
  
  A full-stack, federated GraphQL application built with **Next.js**, **Apollo Federation**, **FastAPI**, and **MongoDB**. This project is fully containerized using Docker for seamless "one-click" deployment on Windows and Linux (Fedora).
