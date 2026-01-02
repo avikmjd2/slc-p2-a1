@@ -1,0 +1,11 @@
+.env
+.venv/
+.vscode/
+.mounted/
+data/
+hooks/
+web-old/
+images/
+static_files/*
+.idea/
+__pycache__/
