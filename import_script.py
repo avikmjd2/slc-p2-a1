@@ -1,9 +1,11 @@
 import requests
 import pymongo
+import os
 
 # 1. Connect to YOUR local MongoDB (New Project Port)
 # Port 27018 is usually the one mapped in your slc-2 docker-compose
-client = pymongo.MongoClient("mongodb://localhost:27018")
+# client = pymongo.MongoClient("mongodb://localhost:27018")
+client = os.getenv("MONGO_URL", "mongodb://localhost:27018/iiit_clubs")
 db = client["iiit_clubs"]
 collection = db["clubs_list"]
 

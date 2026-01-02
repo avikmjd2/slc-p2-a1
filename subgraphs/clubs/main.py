@@ -4,8 +4,11 @@ import motor.motor_asyncio
 from strawberry.fastapi import GraphQLRouter
 import strawberry.federation
 from enum import Enum
+import os
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://db:27017")
+MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27018")
+
+client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_URL)
 database = client["iiit_clubs"]
 collection = database["clubs_list"]
 

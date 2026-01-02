@@ -20,9 +20,11 @@
 
 import requests
 import pymongo
+import os
 
 # Connect to your local MongoDB
-client = pymongo.MongoClient("mongodb://localhost:27018")
+# client = pymongo.MongoClient("mongodb://localhost:27018")
+client = os.getenv("MONGO_URL", "mongodb://localhost:27018/iiit_clubs")
 db = client["iiit_clubs"]
 collection = db["events_list"]
 

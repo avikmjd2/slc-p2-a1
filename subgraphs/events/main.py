@@ -3,6 +3,7 @@ from fastapi import FastAPI
 import motor.motor_asyncio
 from strawberry.fastapi import GraphQLRouter
 import strawberry.federation
+import os
 
 @strawberry.type
 class Event:
@@ -14,7 +15,8 @@ class Event:
     mode:str=""
     description: str | None = "No description available."
     
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://db:27017")
+MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27018")
+client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_URL)
 database = client["iiit_clubs"]
 collection = database["events_list"]
 # collection = database["events_list"]
