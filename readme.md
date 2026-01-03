@@ -28,7 +28,17 @@
  * **UI Implementation:** Responsive grid layouts built with Bootstrap/Tailwind.
  
  ![Subgraphs Rendering 1](Images/Club-1.png)
+
+ Multiple pages is implemented to keep the page clutter free in case the amount of data is huge.
  ![Subgraphs Rendering 2](Images/Club-2.png)
+
+ Club Can be easily added to backend (no auth as of now) via the form provided
+ 
+ ![Subgraphs Rendering 3](Images/club-4.png)
+ 
+ 
+ The added club is immediately vissible in the clubs page indicating direct connection between backend and frontend via Apollo Gateway
+ 
  ![Subgraphs Rendering 3](Images/Club-5.png)
  
  ### 2. Federated Data Stitching
@@ -37,7 +47,7 @@
  ![Events Service Rendering](Images/Event-1.png)
  ![Events Card Components](Images/Event-2.png)
  
- ### 3. Client-Side State Management & Querying
+ ### 3. Client-Side State Management & Querying (SEARCHING BONUS)
  The application leverages React Hooks (`useState`, `useEffect`) and Apollo Client to handle real-time data filtering.
  
  **Reactive Search Logic:**
