@@ -41,7 +41,7 @@
  Since the `auth` service was disabled, standard authentication tokens would fail. To perform privileged mutations (like creating clubs and adding members), a bypass was implemented in the resolvers.
 
  ### Code Modifications
- We modified the `mutations.py` files in `subgraphs/members`, `subgraphs/clubs`, and `subgraphs/events`. The following logic was injected to mock a "Clubs Council" (CC) admin user if no user context was found:
+ We modified the `mutations.py` files in `subgraphs/members` (createMember), `subgraphs/clubs` (createClub), and `subgraphs/events` (createEvent, progressEvent). The following logic was injected to mock a "Clubs Council" (CC) admin user if no user context was found (bypass auth):
 
  ```python
  # Injected Mock User for Auth Bypass
