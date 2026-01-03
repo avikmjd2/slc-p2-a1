@@ -62,15 +62,15 @@
 
  **1. The Coding Club**
  Created with code `CC` and category `technical`.
- ![Create Coding Club](Images/createClub-1.jpg)
+ ![Create Coding Club](Images/createClub-1.png)
 
  **2. The Eating Club**
  Created with code `EC` and tagline "Eat Forever".
- ![Create Eating Club](Images/createClub-2.jpg)
+ ![Create Eating Club](Images/createClub-2.png)
 
  **3. The Procrastination Protocol**
  Created with code `LATER` and description "Mastering the art of ing 5-day assignments 4 hours before the deadline."
- ![Create Procrastination Club](Images/createClub-3.jpg)
+ ![Create Procrastination Club](Images/createClub-3.png)
 
  ---
 
@@ -79,15 +79,15 @@
 
  **1. Adding a Member to The Procrastination Protocol**
  Role: "Chief Exec Procrastinator".
- ![Add Member Procrastination](Images/addMember-1.jpg)
+ ![Add Member Procrastination](Images/addMember-1.png)
 
  **2. Adding a Member to The Eating Club**
  Role: "Foodie".
- ![Add Member Eating Club](Images/addMember-2.jpg)
+ ![Add Member Eating Club](Images/addMember-2.png)
 
  **3. Adding a Member to The Coding Club**
  Role: "Foodie" (assigned to the coding club for demonstration).
- ![Add Member Coding Club](Images/addMember-3.jpg)
+ ![Add Member Coding Club](Images/addMember-3.png)
 
  ---
 
@@ -97,12 +97,12 @@
  **1. Event for The Eating Club**
  Event Name: "Food eating Tournament".
  Location: "H2-5".
- ![Add Event Eating Club](Images/addEvent-1.jpg)
+ ![Add Event Eating Club](Images/addEvent-1.png)
 
  **2. Event for The Procrastination Protocol**
  Event Name: "Procrastination Tournament".
  Description: "Annual rapid chess championship" (ironically placed).
- ![Add Event Procrastination](Images/addEvent-2.jpg)
+ ![Add Event Procrastination](Images/addEvent-2.png)
 
  ---
 
