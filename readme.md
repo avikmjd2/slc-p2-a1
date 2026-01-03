@@ -1,4 +1,4 @@
- # 🚀 IIIT Clubs & Events Portal
+ # **IIIT Clubs & Events Portal**
  
  A full-stack, federated GraphQL application built with **Next.js**, **Apollo Federation**, **FastAPI**, and **MongoDB**. This project is fully containerized using Docker for seamless "one-click" deployment on Windows and Linux (Fedora).
  
