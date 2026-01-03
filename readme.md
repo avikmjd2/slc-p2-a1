@@ -13,7 +13,7 @@
  A full-stack, federated GraphQL application built with **Next.js**, **Apollo Federation**, **FastAPI**, and **MongoDB**. This project is fully containerized using Docker for seamless "one-click" deployment on Windows and Linux (Fedora).
 
  TASK 2:  This Project contains a fully working wordpress website with backend and frontend. The frontend can send and recieve data to backend. Furthemore as a bonus you can search clubs/events with the the search bar in the frontent website of TASK2.
- 
+ Task 2: is completely made by me. (Though AI to debug error, and bootstrap for css)
  ---
  
  ## ✨ Features
