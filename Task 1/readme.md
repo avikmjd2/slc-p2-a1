@@ -30,6 +30,7 @@
          ```
      * Verified that the Gateway, Subgraphs (clubs, members, events), and MongoDB containers were healthy.
 
+ ![Clubs Dashboard](Images/SLC-2.png)
  ![Clubs Dashboard](Images/clubs-1.png)
  *Figure 1: Successful deployment verified by accessing the frontend dashboard.*
 
@@ -47,6 +48,8 @@
  user = info.context.user
  if user is None:
      user = {"role": "cc", "uid": "cc"}
+ #OR
+ role="cc"
  ```
 
  This modification treats every unauthenticated request as a privileged administrator action, allowing full access to the GraphQL API.
@@ -74,8 +77,14 @@
 
  ---
 
+ The data is sucessfully saved and can be verified by visiting frontend websites for club.
+ ![Clubs Dashboard](Images/clubs-1.png)
+ *Figure 1: Successful deployment verified by accessing the frontend dashboard.*
+
+ ---
+
  ### Step 2: Adding Members
- Members were added to the newly created clubs. The authentication bypass allowed us to assign roles without valid login tokens.
+ Members were added to the newly created clubs. The authentication bypass allowed us to assign roles without valid login tokens. The same strategy was used to bypass authentication in mutation.py
 
  **1. Adding a Member to The Procrastination Protocol**
  Role: "Chief Exec Procrastinator".
@@ -108,3 +117,5 @@
 
  ## Conclusion
  By isolating the core services and bypassing the authentication layer, we successfully deployed the backend infrastructure locally. The GraphQL screenshots confirm that the `Clubs`, `Members`, and `Events` subgraphs are communicating correctly with the Gateway and MongoDB.
+
+ **The frontend is also recieving the data added via the gateway indicating successfull implementation of logic.**

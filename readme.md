@@ -9,7 +9,7 @@
  ### 🔹 Task 1: Backend Logic & GraphQL Gateway
  * **Location:** `Task 1` folder directory.
  * **Description:** Implements the core GraphQL Gateway queries and mutations.
- * **Documentation:** Screenshots of working gateway queries/mutations and outputs are documented in `slca1.docx`.
+ * **Documentation:** Screenshots of working gateway queries/mutations and outputs are documented in `slca1.docx` and its **readme.md**.
  * **Compatibility:** Optimized for Windows environment.
  
  ### 🔹 Task 2: Full-Stack Web Application (WordPress Alternative)
