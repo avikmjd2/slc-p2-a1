@@ -30,7 +30,7 @@
          ```
      * Verified that the Gateway, Subgraphs (clubs, members, events), and MongoDB containers were healthy.
 
- ![Clubs Dashboard](Images/clubs-1.jpg)
+ ![Clubs Dashboard](Images/clubs-1.png)
  *Figure 1: Successful deployment verified by accessing the frontend dashboard.*
 
  ---
