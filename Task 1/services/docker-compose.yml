@@ -54,6 +54,7 @@ services:
       dockerfile: dev.Dockerfile
       args:
         - ENV=development
+    command: npm run dev
     volumes:
       - ./web:/web
     env_file:

@@ -1,7 +1,6 @@
 #!/bin/bash
-
-# Create a symbolic link to the node_modules directory in the cache directory
+# Remove existing link/folder if it exists to avoid conflicts
+rm -rf /web/node_modules
+# Link the cached modules
 ln -s /cache/node_modules /web/node_modules
-
-# Execute the container's main process
 exec "$@"
