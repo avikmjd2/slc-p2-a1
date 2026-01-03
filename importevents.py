@@ -42,12 +42,11 @@ def sync_events():
     if response.status_code == 200:
         public_events = response.json()['data']['events']
         
-        # Clear existing to avoid duplicates
+
         collection.delete_many({})
         
         for event in public_events:
-            # Handle the Arrays safely
-            # We take the first element if it's a list, otherwise use a default
+            
             start_time = event['datetimeperiod'][0] if event['datetimeperiod'] else "No time set"
             loc = event['location'][0] if event['location'] else "TBD"
 
@@ -55,14 +54,14 @@ def sync_events():
                 "eid": event['_id'],
                 "name": event['name'],
                 "clubid": event['clubid'],
-                "time": start_time, # Store as a string for now
+                "time": start_time, 
                 "location": loc,
                 "mode": event['mode']
             }
             
             collection.insert_one(event_doc)
             
-        print(f"✅ Successfully imported {len(public_events)} events!")
+        # print(f"✅ Successfully imported {len(public_events)} events!")
 
 if __name__ == "__main__":
     sync_events()

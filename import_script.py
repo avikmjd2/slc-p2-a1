@@ -24,8 +24,7 @@ def sync_clubs():
         print(f"Retrieved {len(public_clubs)} clubs. Starting import...")
 
         for club in public_clubs:
-            # Prepare the document to match your NEW schema
-            # We map 'name' and 'cid' directly, and fill the rest with defaults
+            
             document = {
                 "cid": club['cid'],
                 "name": club['name'],
@@ -35,15 +34,14 @@ def sync_clubs():
                 "tagline": ""
             }
 
-            # 'upsert=True' means: if cid exists, update it. If not, create it.
-            # This prevents duplicate clubs if you run the script twice.
+            
             collection.update_one(
                 {"cid": club['cid']},
                 {"$set": document},
                 upsert=True
             )
         
-        print("✅ Success! Your local database is now populated.")
+        # print("✅ Success! Your local database is now populated.")
     else:
         print(f"Error fetching data: {response.status_code}")
 

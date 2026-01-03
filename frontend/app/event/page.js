@@ -26,10 +26,21 @@ allEvents{
 function EventsGrid() {
   const { loading, error, data } = useQuery(GET_EVENTS);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchVia, setSearchVia] = useState("Events");
+  let filteredEvents = null
   const { search } = useSearch();
-  const filteredEvents = data?.allEvents.filter((event) => {
-    return event.name.toLowerCase().includes(search.toLowerCase());
-  }) || [];
+
+  if (searchVia === "Clubs") {
+    filteredEvents = data?.allEvents.filter((event) => {
+      return event.clubid.toLowerCase().includes(search.toLowerCase());
+    }) || [];
+
+  }
+  else {
+    filteredEvents = data?.allEvents.filter((event) => {
+      return event.name.toLowerCase().includes(search.toLowerCase());
+    }) || [];
+  }
   const cardsPerPage = 6;
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
@@ -49,7 +60,20 @@ function EventsGrid() {
       {loading && <LoadingOverlay />}
       <div className="container pb-5">
         <div className="row g-4 justify-content-center mt-2">
-           {(currentCards.length===0)&&<h2 className="container mt-5 d-flex align-items-center justify-content-center">No Content Found</h2>}
+
+
+          {(search !== "") && <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter Via: {searchVia}
+            </button>
+            <ul class="dropdown-menu">
+              <li><a className="dropdown-item" onClick={(e)=>{setSearchVia("Events")}}>Events</a></li>
+              <li><a className="dropdown-item" onClick={(e)=>{setSearchVia("Clubs")}}>Clubs</a></li>
+            </ul>
+          </div>}
+
+
+          {(currentCards.length === 0) && <h2 className="container mt-5 d-flex align-items-center justify-content-center">No Content Found</h2>}
           {currentCards.map((event) => (
 
 
@@ -75,7 +99,7 @@ function EventsGrid() {
                     {/* Official student-led community for {club.name} at IIIT. */}
                     {event.description}
                   </p>
-                   <p className="small text-muted mb-2 flex-grow-1">
+                  <p className="small text-muted mb-2 flex-grow-1">
                     Mode - {event.mode}
                   </p>
                   <p className="small text-muted mb-2 flex-grow-1">
