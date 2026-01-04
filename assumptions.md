@@ -17,20 +17,20 @@ I chose this custom architecture over WordPress for the following reasons:
 3.  **Dockerization & Portability:** This project is fully containerized. Unlike a standard LAMP stack (Linux, Apache, MySQL, PHP) often required for WordPress, this microservices architecture runs identically on Windows, Linux (Fedora), and macOS via a single `docker compose up` command, satisfying the cross-platform requirement more robustly.
 4.  **Educational Scope:** Building a federated Gateway, writing raw GraphQL schemas, and handling React state for dynamic searching provides a significantly higher "lines-of-code" technical contribution than configuring WordPress plugins and themes.
 
-## 2. Assumption: Data "Stitching"
+## 2. Assumption: Data Stitching
 **Assumption:** I interpreted "stitching" as **Schema Stitching/Federation** at the API gateway level, rather than just linking pages visually.
 **Implementation:**
 * The **Gateway** (Port 4000) automatically aggregates data from the **Clubs Service** (Port 8000) and **Events Service** (Port 8001).
 * The frontend queries a single endpoint, unaware that the data comes from different servers. This mimics enterprise-grade "Headless CMS" architectures better than a traditional WordPress setup.
 
-## 3. Assumption: "One-Click" Deployment
+## 3. Assumption: One-Click Deployment
 **Assumption:** The ease of setup is prioritized over the ease of content editing for this specific submission.
 **Implementation:** A `docker-compose.yml` file is provided to orchestrate 6 distinct services (Frontend, Gateway, 2 Subgraphs, DB, Seeder).
 * **Deviation:** There is no "wp-admin" dashboard.
 * **Solution:** Content management (Adding Clubs) is handled via a custom-built, mutation-backed React form on the frontend, which provides a cleaner, bespoke user experience for the specific task of adding clubs.
 
 ## 4. Feature Parity
-I assumed that "mimicking the website" meant replicating the *user experience* and *core data flows*, not the underlying CMS.
+I assumed that mimicking the website meant replicating the *user experience* and *core data flows* as the actual website.
 
 | Requirement | WordPress Approach | My Federated Approach | Benefit of My Approach |
 | :--- | :--- | :--- | :--- |
@@ -40,4 +40,5 @@ I assumed that "mimicking the website" meant replicating the *user experience* a
 | **Data** | MySQL (Relational) | **MongoDB (NoSQL)** | Flexible schema for Clubs/Events allows rapid iteration. |
 
 ## Conclusion
+
 This submission meets all functional requirements (displaying clubs, handling events, search/filtering, and seamless deployment) but achieves them using a **Cloud-Native Architecture**. This ensures the project is not just a website, but a scalable software application ready for modern deployment pipelines.
